@@ -128,8 +128,8 @@ brew "watchman"
 brew "zsh"
 
 # Heroku
-brew "heroku/brew/heroku"
-brew "parity"
+# brew "heroku/brew/heroku"
+# brew "parity"
 
 # GitHub
 brew "hub"
@@ -141,16 +141,23 @@ brew "imagemagick"
 brew "libyaml" # should come after openssl
 brew "coreutils"
 brew "yarn"
-cask "gpg-suite"
+brew "kubernetes-cli"
+brew "kops"
+brew "kubernetes-helm"
+brew "gomplate"
+brew "jq"
+brew "yq"
+cask "fly"
+# cask "gpg-suite"
 
 # Databases
-brew "postgres", restart_service: :changed
-brew "redis", restart_service: :changed
+# brew "postgres", restart_service: :changed
+# brew "redis", restart_service: :changed
 EOF
 
-fancy_echo "Update heroku binary ..."
-brew unlink heroku
-brew link --force heroku
+# fancy_echo "Update heroku binary ..."
+# brew unlink heroku
+# brew link --force heroku
 
 fancy_echo "Configuring asdf version manager ..."
 if [ ! -d "$HOME/.asdf" ]; then
@@ -186,11 +193,11 @@ install_asdf_language() {
   fi
 }
 
-fancy_echo "Installing latest Ruby ..."
-install_asdf_language "ruby"
-gem update --system
-number_of_cores=$(sysctl -n hw.ncpu)
-bundle config --global jobs $((number_of_cores - 1))
+# fancy_echo "Installing latest Ruby ..."
+# install_asdf_language "ruby"
+# gem update --system
+# number_of_cores=$(sysctl -n hw.ncpu)
+# bundle config --global jobs $((number_of_cores - 1))
 
 fancy_echo "Installing latest Node ..."
 bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
