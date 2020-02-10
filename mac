@@ -147,6 +147,7 @@ brew "kubernetes-helm"
 brew "gomplate"
 brew "jq"
 brew "yq"
+brew "awscli"
 cask "fly"
 # cask "gpg-suite"
 
